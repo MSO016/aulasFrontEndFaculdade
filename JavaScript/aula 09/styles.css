@@ -1,0 +1,40 @@
+/*body{background:#a6edc8}
+header, main, footer {background:#ffffff; color:#2716e8;}
+
+button {background:#be7a13; color:#FFFFFF; font-size:20px;font-family: arial;}
+button:hover {background:#6495ed; cursor:pointer;}*/
+
+body {
+    background: #e6f0f8;
+    font-family: Arial, sans-serif;
+}
+
+header, main, footer {
+    background: #ffffff;
+    color: #2a2e74;
+    border: 2px solid #444444;
+    padding: 10px;
+    margin: 10px;
+}
+
+button {
+    background: #f18f01;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Arial;
+    border: none;
+    padding: 10px 20px;
+}
+
+button:hover {
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+ul#lista li {
+    background-color: #f1f1f1;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    color: #2a2e74;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>Correção - Atividade 4</title>
+		<meta charset="UTF-8">
+		<script type="text/javascript">
+			let repetir = true;
+			let listaCompras = [];
+			while (repetir) {
+				let produto = prompt('Informe o produto:');
+				if (produto != '') {
+					listaCompras.push(produto);
+				}
+				repetir = confirm('Inserir mais produtos?');
+			}
+			let conteudo = '<ul>';
+			for (let i = 0; i < listaCompras.length; i++) {
+				conteudo += '<li>'+ listaCompras[i] +'</li>';
+			}
+			conteudo += '</ul>';
+			document.write(conteudo);
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

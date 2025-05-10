@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boleano</title>
+    <script type="text/javascript">
+
+        let repetir =true;
+        let listaCompras = [];
+        while(repetir){
+            let produto = prompt("Informe o produto: ");
+            if(produto != ''){
+                listaCompras.push(produto);
+            }
+            repetir = confirm("Adicionar mais um produto?");
+        }
+        let conteudo = '<ul>';
+        for (let i = 0; i < listaCompras.length; i++) {
+            conteudo += '<li>' + listaCompras[i] + '</li>';
+        }
+        conteudo+= '</ul>';
+        document.write(conteudo);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

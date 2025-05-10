@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Supermercado</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript">
+
+        let listaCompras = [];
+
+        function atualizarLista() {
+            let listaHtml = document.getElementById("lista");
+            listaHtml.innerHTML = "";
+
+            for (let i = 0; i < listaCompras.length; i++) {
+                listaHtml.innerHTML += "<li>" + listaCompras[i] + "</li>";
+            }
+        }
+
+        function validarItem(valor) {
+            if (valor === "" || valor.indexOf(" ") === 0 || !isNaN(valor)) {
+                return false;
+            }
+            return true;
+        }
+
+        function adicionarItem() {
+            let item = document.getElementById("item").value;
+
+            if (validarItem(item)) {
+                listaCompras.push(item);
+                document.getElementById("item").value = "";
+                atualizarLista();
+            } else {
+                alert("Por favor, insira um nome válido para o item (sem números ou campos vazios).");
+            }
+        }
+
+        window.onload = function() {
+            document.getElementById("btnAdicionar").onclick = adicionarItem;
+
+            document.getElementById("item").onkeypress = function(event) {
+                if (event.key === "Enter") {
+                    adicionarItem();
+                }
+            };
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Lista de Supermercado</h1>
+    </header>
+    <main>
+        <input type="text" id="item" placeholder="Digite um item">
+        <button id="btnAdicionar">Adicionar</button>
+        
+        <h2>Itens na Lista:</h2>
+        <ul id="lista"></ul>
+    </main>
+</body>
+</html>

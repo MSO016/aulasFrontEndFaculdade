@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Supermercado</title>
+    <script type="text/javascript">
+        let listaCompras = [];
+
+        function atualizarLista() {
+            let listaHtml = document.getElementById("lista");
+            listaHtml.innerHTML = "";
+
+            for (let i = 0; i < listaCompras.length; i++) {
+                listaHtml.innerHTML += "<li>" + listaCompras[i] + "</li>";
+            }
+        }
+
+        function adicionarItem() {
+            let item = document.getElementById("item").value;
+            if (item !== "") {
+                listaCompras.push(item);
+                document.getElementById("item").value = "";
+                atualizarLista();
+            }
+        }
+
+        window.onload = function() {
+            document.getElementById("btnAdicionar").onclick = adicionarItem;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Lista de Supermercado</h1>
+    </header>
+    <main>
+        <input type="text" id="item" placeholder="Digite um item">
+        <button id="btnAdicionar">Adicionar</button>
+        
+        <h2>Itens na Lista:</h2>
+        <ul id="lista"></ul>
+    </main>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto de Perguntas e Respostas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f0f4f8;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #fff;
+            background: linear-gradient(135deg, #ff7a18, #af002d);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        select, button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        select {
+            background: #f4a261;
+            color: #fff;
+        }
+
+        select:hover {
+            background: #e76f51;
+        }
+
+        button {
+            background: #2a9d8f;
+            color: #fff;
+            margin-left: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background: #264653;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #resposta, #historico {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        #resposta p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+
+        ul li {
+            background: linear-gradient(135deg, #ff7a18, #af002d);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        #limpar-btn {
+            background: #e63946;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        #limpar-btn:hover {
+            background: #d62828;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fadeIn {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Perguntas e Respostas sobre HTML e JavaScript</h1>
+
+    <p>Selecione uma pergunta para obter a resposta:</p>
+
+    <select id="pergunta">
+        <option value="html">Qual o propósito da linguagem HTML?</option>
+        <option value="js">Qual o propósito da linguagem JavaScript?</option>
+        <option value="funcoes">O que são funções e como elas são definidas na linguagem JavaScript?</option>
+    </select>
+
+    <button onclick="mostrarResposta()">Mostrar Resposta</button>
+    <button onclick="limpar()">Limpar Histórico</button>
+
+    <div id="resposta">
+    </div>
+
+    <div id="historico">
+        <h2>Histórico de Respostas</h2>
+        <ul id="historico-respostas">
+        </ul>
+    </div>
+
+    <script>
+        const respostas = {
+            html: "HTML é tipo o esqueleto de uma página na internet, sabe? É ele que fica colocando as coisas na tela, tipo, onde vai o título, onde vai o texto, onde vai a imagem... É como se fosse aquele papel que a gente pega e desenha a planta da casa. Não faz nada muito complexo, só fica ali falando aqui vai ser o título, ali vai ser a foto, mas sem ele, a página nem existiria. Tipo uma folha em branco.",
+            js: "Ah, o JavaScript, esse é o cara que faz as coisas acontecerem de verdade! Ele é tipo um gênio da lâmpada. Se você clica em um botão e a tela muda, é o JavaScript que fez isso. É ele que coloca as animações, faz a página se mexer... ele é tipo o assistente invisível que fica atrás de tudo, fazendo as coisas acontecerem sem ninguém ver. Tipo magia, mas com um nome feio: programação.",
+            funcoes: "Função em JavaScript é tipo um truque de mágica. Você fala que eu quero um truque de número, e o truque é fazer a soma de dois números. Então você cria essa função, tipo ok, aqui é onde você vai somar os números e devolver o resultado. Aí, você chama a função toda vez que quiser fazer isso. É como se fosse um botão mágico: você clica, e ele faz o que você pediu. Mas tipo, se eu te contar mais sobre isso, vou ter que falar um monte de coisa que só quem entende vai entender, e eu não sou esse cara, não. Mas é isso, funções são truques, só isso."
+        };
+
+        let historico = [];
+
+        function mostrarResposta() {
+            const perguntaSelecionada = document.getElementById('pergunta').value;
+            const resposta = respostas[perguntaSelecionada];
+
+            document.getElementById('resposta').innerHTML = `<p>${resposta}</p>`;
+
+            if (!historico.includes(resposta)) {
+                historico.push(resposta);
+                atualizarHistorico();
+            }
+        }
+
+        function atualizarHistorico() {
+            const listaHistorico = document.getElementById('historico-respostas');
+            listaHistorico.innerHTML = ''; // Limpar histórico atual
+            historico.forEach(resposta => {
+                const li = document.createElement('li');
+                li.textContent = resposta;
+                listaHistorico.appendChild(li);
+            });
+        }
+
+        
+        function limpar() {
+            historico = [];
+            atualizarHistorico();
+            document.getElementById('resposta').innerHTML = ''; // Limpar a resposta exibida
+        }
+    </script>
+
+</body>
+</html>

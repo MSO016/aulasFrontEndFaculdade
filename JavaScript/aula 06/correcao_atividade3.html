@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>Correção - Atividade 3</title>
+		<meta charset="UTF-8">
+		<script type="text/javascript">
+			let valor1 = prompt('Informe o primeiro valor:');
+			let valor2 = prompt('Informe o segundo valor:');			
+			if (!isNaN(valor1) && !isNaN(valor2) && valor1 != '' && valor2 != ''
+					&& valor1.indexOf(' ') == -1 && valor2.indexOf(' ') == -1) {
+				let operacao = prompt('Informe a operação (+ - * /):');
+				valor1 = parseFloat(valor1);
+				valor2 = parseFloat(valor2);
+				let resultado = '';
+				switch (operacao) {
+					case '+':
+						resultado = valor1 + valor2;
+						break;
+					case '-':
+						resultado = valor1 - valor2;
+						break;
+					case '*':
+						resultado = valor1 * valor2;
+						break;
+					case '/':
+						if (valor2 > 0) {
+							resultado = valor1 / valor2;
+						}
+						break;
+					default:
+						resultado = 'Operação inválida!';
+				}
+				alert(resultado);
+			} else {
+				alert('Informe apenas números!');
+			}
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>
