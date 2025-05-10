@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        listaCompras = [];
+        
+        do {
+            let item = prompt("Digite um item para lista:");
+            listaCompras.push(item);
+        }while(confirm("Adicionar mais um item?"));
+               
+        conteudo = '';
+        for (let pos in listaCompras) {
+            conteudo+= listaCompras[pos] + '<br>';
+        }
+        document.write(conteudo);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+<!-- for= para | in= em, na... -->
+ 
+<!-- Pensamento Usado: A escolha do nome "pos" sugere que ela armazena a "posição" do item. 
+
+ POR EXEMPLO: let= variavel | pos = posição| in= em,na... | lista de compras.-->
+
+ 
+  <!-- push= adicionar | listacompras.push(item)= 
+   adiciona um item do prompt da vairavel "item" para a lista de compras -->

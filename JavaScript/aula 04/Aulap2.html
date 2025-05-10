@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 4 p.2</title>
+    <script type="text/javascript">
+        let cidade = prompt("Informe uma cidade: ");
+
+cidade = cidade.toLowerCase() || cidade.toUpperCase;
+
+        switch (cidade){
+
+        case 'taquaritinga':
+                alert (`Cidade ${cidade}, conhecida pelo Batatão`)
+                break;
+        case 'monte alto':
+            alert (`Cidade ${cidade}, conhecida pelo Museu.`);
+                break;
+        case 'jaboticabal':
+        case 'são lourenço do turvo':
+            alert(`Cidade ${cidade}, conhecida pela Festas.`);
+                break;
+            case 'matão':
+            alert(`Cidade ${cidade}, conhecida pela Corpus Christ.`);
+                break;
+        case 'itápolis':
+            alert(`Cidade ${cidade}, conhecida pelo Sorvete.`);
+                break;
+        case 'ibitinga':
+            alert(`Cidade ${cidade}, conhecida pelo Bordado.`);
+                break;
+        case 'guariba':
+            alert(`Cidade ${cidade}, conhecida pela Cana-de-Açucar.`);
+                break;
+        default:
+            alert(`Cidade não identificada!`);
+    
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

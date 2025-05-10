@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Aula 05</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+
+        let listaBandas = [];
+        listaBandas.push('Charlie Brown Jr');
+        listaBandas.push('ACDC');
+        listaBandas.push('System of Down');
+        listaBandas.push('KISS');
+        listaBandas.push('Link Park');
+        listaBandas.push('Dream Theater');
+
+        listaBandas.pop();
+        listaBandas.splice(3, 1);
+
+
+        let conteudo = ""
+        for (let i=0; i < listaBandas.length; i++) {
+          conteudo += listaBandas[i] + "<br>";
+
+        }
+
+        document.write(listaBandas);
+        conteudo = '';
+        let posicao = 0;
+
+        while (posicao < listaBandas.length) {
+            conteudo+= listaBandas[posicao] +'<br>';
+            posicao++;
+        }
+
+        document.write(conteudo);
+
+        conteudo = '';
+
+        posicao = 0;
+        do {
+            conteudo+= listaBandas[posicao]+ "<br>";
+            posicao++;
+        }while (posicao < listaBandas.length);
+        document.write(conteudo)
+        
+        conteudo = '';
+        for (let pos in listaBandas) {
+            conteudo+= listaBandas[pos]+ '<br>';
+        }
+        document.write(conteudo);
+
+        do {
+            alert('Exemplo de mensagem');
+        } while (confirm('Visualizar novamente?'));
+    </script>
+    
+</head>
+<body>
+    
+</body>
+
+</html>
+ <!-- i de interação -->

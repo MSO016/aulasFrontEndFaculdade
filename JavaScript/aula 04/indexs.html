@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 4</title>
+    <script type="text/javascript">
+        let valor1 = prompt("Informe o primeiro valor: ");
+        let valor2 = prompt("Informe o segundo valor: ");
+        //NaN not a number
+        /*if(isNaN(valor1) || isNaN(valor2)) {
+            alert("informe apenas números")
+        }else{
+        let resultado = parseFloat(valor1)+parseFloat(valor2); 
+        alert(`resposta: ${resultado}`);
+    }*/
+        if(!isNaN(valor1) && !isNaN(valor2)){
+            let resultado = parseFloat(valor1) + parseFloat(valor2);
+            alert(`resposta: ${resultado}`);
+        }else if (isNaN(valor1) && isNaN(valor2)){
+            alert("Os dois valores são letras");
+        }else if (isNaN(valor1)){
+            alert("Primeiro valor não é um numero");
+        }else if (isNaN(valor2)){//Poderia ser retirado que funcionaria do mesmo jeito
+            alert("Segundo valor não é um numero");
+        }        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

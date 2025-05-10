@@ -1,0 +1,26 @@
+<html>
+<body>
+    <h1>aula 4 JS</h1>
+    <script>
+        function buscarCEP() {
+            let cep = prompt("Qual CEP vc quer buscar?");
+            let url = "https://brasilapi.com.br/api/cep/v2/" + cep;
+            //let url = "https://viacep.com.br/ws/" + cep + "/json/";
+            //
+            fetch(url)
+  .then(resposta => {
+    resposta.json().then(dados => {
+      console.log(dados);
+    });
+  });
+                }
+            }
+            .catch(function(erro)) {
+                console.log("ocorreu um erro ao buscar os dados", erro);
+            }
+        }
+
+        buscarCEP();
+    </script>    
+</body>
+</html>

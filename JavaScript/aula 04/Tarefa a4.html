@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarefa da Aula 4</title>
+</head>
+<body>
+    <script>
+        const valor1 = prompt("Digite o primeiro valor:");
+        const valor2 = prompt("Digite o segundo valor:");
+        const operacao = prompt("Digite a operação (+, -, *, /):");
+
+        if (isNaN(valor1) || isNaN(valor2)) {
+            alert("Erro: Deve ser inserido números e não letras.");
+        } else {
+            const num1 = parseFloat(valor1);
+            const num2 = parseFloat(valor2);
+            let resultado;
+
+            switch (operacao) {
+                case '+':
+                    resultado = num1 + num2;
+                    break;
+                case '-':
+                    resultado = num1 - num2;
+                    break;
+                case '*':
+                    resultado = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 !== 0) {
+                        resultado = num1 / num2;
+                    } else {
+                        alert('Erro: Divisão por zero!');
+                        resultado = NaN;
+                    }
+                    break;
+                default:
+                    alert('Erro: Operação inválida!');
+                    resultado = NaN;
+            }
+
+            if (!isNaN(resultado)) {
+                alert('Resultado: ' + resultado);
+            }
+        }
+    </script>
+</body>
+</html>

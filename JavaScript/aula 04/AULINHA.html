@@ -1,0 +1,22 @@
+<html>
+    <Body>
+        <h1>Curso JS semana 3</h1>
+        <script>
+            let lista = [];
+            let novoItem = prompt("digite o nome do item ou aperte enter se não quiser mais adicionar");
+            while(novoItem != ""){
+                lista.push(novoItem);
+                novoItem = prompt("digite o nome do item ou aperte enter se não quiser mais adicionar");
+
+            }
+            if(lista.length == 0){
+                alert("A lista esta vazia");
+            }else{
+                alert("A lista tem " + lista.length + " itens e estes itens são:");
+                for(let i =0; i<lista.length; i++) {
+                    alert(lista[i]);
+                }
+            }
+        </script>
+    </Body>
+</html>
