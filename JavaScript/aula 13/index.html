@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="vue.min.js"></script>
+    <title>Lista de Filmes</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <img src="img/img1.png" alt="logotipo_ThePiratBay" style="width: 60%";></img> <!-- style="width: 30%"; -->
+        </div>
+        
+        <div id="app" class="row">
+            <div class="col-md-3">
+                <h1>Cadastro de Filmes</h1>
+                <input type="text" placeholder="Título" class="form-control mb-2" v-model="titulo">
+                <input type="text" placeholder="Gênero" class="form-control mb-2" v-model="genero">
+                <input type="text" placeholder="Autores" class="form-control mb-2" v-model="autores">
+                <input type="number" placeholder="Ano" class="form-control mb-2" v-model="ano">
+                <div v-if = "validarPreenchimento()">
+                    <button class="btn btn-danger" @click = "salvar()" >Salvar</button>
+                </div>
+                <div v-else>
+                    <button class="btn btn-secundary" disabled>Salvar</button>
+                </div>
+            </div>
+           
+            <div class="col-md-5">
+                <h1>Lista de Filmes</h1>
+            </div>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Gênero</th>
+                        <th>Autores</th>
+                        <th>Ano</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(Filmes, index) in listaFilmes">
+                        <td>{{ Filmes.titulo }}</td>
+                        <td>{{ Filmes.genero }}</td>
+                        <td>{{ Filmes.autores }}</td>
+                        <td>{{ Filmes.ano }}</td>
+                    </tr>
+                </tbody>
+            </table>
+           </div>
+    </div>
+    <script type="text/javascript">
+        class Filmes {
+            constructor (titulo, genero, autores, ano) {
+                this.titulo = titulo;
+                this.genero = genero;
+                this.autores = autores;
+                this.ano = ano;
+            }
+        }
+        let app = new Vue({
+            el: '#app',
+            data: {
+                titulo: '',
+                genero: '',
+                autores: '',
+                ano: '',
+                listaFilmes: []
+            },
+            methods: {
+                
+
+                    validarPreenchimento: function() {
+                        return (this.titulo && this.genero && this.autores && this.ano);
+                    },
+                    
+                
+                    salvar: function() {
+
+                    let novoFilmes = new Filmes(this.titulo, this.genero, this.autores, this.ano,);
+
+                    this.listaFilmes.push(novoFilmes);
+                    this.titulo = '';
+                    this.genero = '';
+                    this.autores = '';
+                    this.ano = '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
