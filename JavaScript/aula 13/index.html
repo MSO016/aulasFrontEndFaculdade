@@ -1,95 +1,115 @@
 <!DOCTYPE html>
-<html lang="pt-br" data-bs-theme="dark">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <script src="vue.min.js"></script>
-    <title>Lista de Filmes</title>
+  <meta charset="UTF-8">
+  <title>Atividade - Vue - React - Angular</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <script src="vue.min.js"></script>
+
+  <style>
+    .card img {
+      max-width: 80px;
+      margin: 0 auto;
+    }
+    footer {
+      font-size: 14px;
+      margin-top: 50px;
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <img src="img/img1.png" alt="logotipo_ThePiratBay" style="width: 60%";></img> <!-- style="width: 30%"; -->
+  <div id="app" class="container py-4">
+
+    <h1 class="text-center mb-5">Atividade - Vue - React - Angular</h1>
+
+    <div class="row">
+      <div class="col-md-3">
+        <h5>Visualizar</h5>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" v-model="mostrarVue" id="vueCheck">
+          <label class="form-check-label" for="vueCheck">Vue</label>
         </div>
-        
-        <div id="app" class="row">
-            <div class="col-md-3">
-                <h1>Cadastro de Filmes</h1>
-                <input type="text" placeholder="Título" class="form-control mb-2" v-model="titulo">
-                <input type="text" placeholder="Gênero" class="form-control mb-2" v-model="genero">
-                <input type="text" placeholder="Autores" class="form-control mb-2" v-model="autores">
-                <input type="number" placeholder="Ano" class="form-control mb-2" v-model="ano">
-                <div v-if = "validarPreenchimento()">
-                    <button class="btn btn-danger" @click = "salvar()" >Salvar</button>
-                </div>
-                <div v-else>
-                    <button class="btn btn-secundary" disabled>Salvar</button>
-                </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" v-model="mostrarReact" id="reactCheck">
+          <label class="form-check-label" for="reactCheck">React</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" v-model="mostrarAngular" id="angularCheck">
+          <label class="form-check-label" for="angularCheck">Angular</label>
+        </div>
+      </div>
+
+    
+      <div class="col-md-9">
+        <div class="row justify-content-center">
+          <div class="col-md-4 text-center mb-4" v-if="mostrarVue">
+            <div class="card p-3">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" alt="Vue">
+              <div class="card-body">
+                <h5 class="card-title">Vue</h5>
+                <p class="card-text">
+                    Fácil de aprender<br>
+                    Sintaxe intuitiva<br>
+                    Leve e rápido<br>
+                    Ideal para iniciantes<br>
+                    Reativo e flexível
+                </p>
+              </div>
             </div>
-           
-            <div class="col-md-5">
-                <h1>Lista de Filmes</h1>
+          </div>
+          <div class="col-md-4 text-center mb-4" v-if="mostrarReact">
+            <div class="card p-3">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React">
+              <div class="card-body">
+                <h5 class="card-title">React</h5>
+                <p class="card-text">
+                    Muito popular no mercado<br>
+                    Componentes reutilizáveis<br>
+                    Comunidade enorme<br>
+                    Rico em ferramentas<br>
+                    Ótimo para SPAs
+                </p>
+              </div>
             </div>
-            
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Gênero</th>
-                        <th>Autores</th>
-                        <th>Ano</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(Filmes, index) in listaFilmes">
-                        <td>{{ Filmes.titulo }}</td>
-                        <td>{{ Filmes.genero }}</td>
-                        <td>{{ Filmes.autores }}</td>
-                        <td>{{ Filmes.ano }}</td>
-                    </tr>
-                </tbody>
-            </table>
-           </div>
+          </div>
+          <div class="col-md-4 text-center mb-4" v-if="mostrarAngular">
+            <div class="card p-3">
+              <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular">
+              <div class="card-body">
+                <h5 class="card-title">Angular</h5>
+                <p class="card-text">
+                    Framework completo<br>
+                    Tipagem com TypeScript<br>
+                    Ferramentas integradas<br>
+                    Padrão corporativo<br>
+                    Alta escalabilidade
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <script type="text/javascript">
-        class Filmes {
-            constructor (titulo, genero, autores, ano) {
-                this.titulo = titulo;
-                this.genero = genero;
-                this.autores = autores;
-                this.ano = ano;
-            }
-        }
-        let app = new Vue({
-            el: '#app',
-            data: {
-                titulo: '',
-                genero: '',
-                autores: '',
-                ano: '',
-                listaFilmes: []
-            },
-            methods: {
-                
 
-                    validarPreenchimento: function() {
-                        return (this.titulo && this.genero && this.autores && this.ano);
-                    },
-                    
-                
-                    salvar: function() {
+    <footer class="mt-5">
+      Atividade elaborada em Vue.js
+    </footer>
 
-                    let novoFilmes = new Filmes(this.titulo, this.genero, this.autores, this.ano,);
+  </div>
 
-                    this.listaFilmes.push(novoFilmes);
-                    this.titulo = '';
-                    this.genero = '';
-                    this.autores = '';
-                    this.ano = '';
-                }
-            }
-        });
-    </script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        mostrarVue: true,
+        mostrarReact: true,
+        mostrarAngular: true
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
