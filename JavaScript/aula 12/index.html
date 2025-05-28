@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <img src="img/img1.png" alt="logotipo_ThePiratBay" style="width: 60%";></img> <!-- style="width: 30%"; -->
+            <img src="img/img1.png" alt="logotipo_ThePiratBay" style="width: 50%";></img> <!-- style="width: 30%"; -->
         </div>
         
         <div id="app" class="row">
@@ -39,6 +39,8 @@
                         <th>Gênero</th>
                         <th>Autores</th>
                         <th>Ano</th>
+                        <th>Alterar</th>
+                        <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,6 +49,8 @@
                         <td>{{ Filmes.genero }}</td>
                         <td>{{ Filmes.autores }}</td>
                         <td>{{ Filmes.ano }}</td>
+                        <td><a href="#" @click= "alterar(index)"><img src="img/editar.png" alt="Editar" width="32px"></a></td>
+                        <td><a href="#" @click= "alterar(index)"><img src="img/excluir.png" alt="Excluir" width="32px"></a></td>
                     </tr>
                 </tbody>
             </table>
@@ -68,10 +72,10 @@
                 genero: '',
                 autores: '',
                 ano: '',
-                listaFilmes: []
+                listaFilmes: [],
+                posAlterar: -1,
             },
             methods: {
-                
 
                     validarPreenchimento: function() {
                         return (this.titulo && this.genero && this.autores && this.ano);
@@ -87,6 +91,15 @@
                     this.genero = '';
                     this.autores = '';
                     this.ano = '';
+                },
+
+                alterar: function(pos) {
+                    this.posAlterar = pos;
+                    this.titulo = this.listaFilmes[pos].titulo;
+                    this.genero = this.listaFilmes[pos].genero;
+                    this.autores = this.listaFilmes[pos].autores;
+                    this.ano = this.listaFilmes[pos].ano;
+
                 }
             }
         });

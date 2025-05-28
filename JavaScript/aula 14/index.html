@@ -14,12 +14,14 @@
         </div>
         
         <div id="app" class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <h1>Cadastro de Filmes</h1>
+                <input type="number" placeholder="Código" class="form-control mb-2" v-model="codigo">
                 <input type="text" placeholder="Título" class="form-control mb-2" v-model="titulo">
                 <input type="text" placeholder="Gênero" class="form-control mb-2" v-model="genero">
                 <input type="text" placeholder="Autores" class="form-control mb-2" v-model="autores">
                 <input type="number" placeholder="Ano" class="form-control mb-2" v-model="ano">
+                <input type="number" placeholder="Valor" class="form-control mb-2" v-model="valor">
                 <div v-if = "validarPreenchimento()">
                     <button class="btn btn-danger" @click = "salvar()">Salvar</button>
                 </div>
@@ -28,82 +30,124 @@
                 </div>
             </div>
            
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h1>Lista de Filmes</h1>
-            </div>
+            
             
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>Código</th>
                         <th>Título</th>
                         <th>Gênero</th>
                         <th>Autores</th>
                         <th>Ano</th>
+                        <th>Valor</th>
                         <th>Alterar</th>
                         <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(Filmes, index) in listaFilmes">
+                        <td>{{ Filmes.codigo }}</td>
                         <td>{{ Filmes.titulo }}</td>
                         <td>{{ Filmes.genero }}</td>
                         <td>{{ Filmes.autores }}</td>
                         <td>{{ Filmes.ano }}</td>
+                        <td>{{ Filmes.valor | reais }}</td>
                         <td><a href="#" @click= "alterar(index)"><img src="img/editar.png" alt="Editar" width="32px"></a></td>
-                        <td><a href="#" @click= "alterar(index)"><img src="img/excluir.png" alt="Excluir" width="32px"></a></td>
+                        <td><a href="#" @click= "excluir(index)"><img src="img/excluir.png" alt="Excluir" width="32px"></a></td>
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <b>Total: </b> {{ total | reais }}
+            </div>
            </div>
+        </div>   
     </div>
     <script type="text/javascript">
         class Filmes {
-            constructor (titulo, genero, autores, ano) {
+            constructor (codigo, titulo, genero, autores, ano, valor) {
+                this.codigo = codigo;
                 this.titulo = titulo;
                 this.genero = genero;
                 this.autores = autores;
                 this.ano = ano;
+                this.valor = valor;
             }
         }
         let app = new Vue({
             el: '#app',
             data: {
+                sequencial: '1',
+                codigo: '1',
                 titulo: '',
                 genero: '',
                 autores: '',
                 ano: '',
+                valor: '',
                 listaFilmes: [],
                 posAlterar: -1,
             },
             methods: {
                 
-
                     validarPreenchimento: function() {
-                        return (this.titulo && this.genero && this.autores && this.ano);
+                        return (this.titulo && this.genero && this.autores && this.ano && this.valor);
                     },
                     
                 
                     salvar: function() {
 
-                    let novoFilmes = new Filmes(this.titulo, this.genero, this.autores, this.ano,);
-
-                    this.listaFilmes.push(novoFilmes);
+                    let novoFilmes = new Filmes(this.codigo, this.titulo, this.genero, this.autores, this.ano, this.valor);
+                    
+                    if (this.posAlterar < 0) {
+                        this.listaFilmes.push(novoFilmes);
+                        this.sequencial++;
+                    }else {
+                        Vue.set(this.listaFilmes, this.posAlterar, novoFilmes);
+                        this.posAlterar = -1;
+                    }
+                    this.codigo = this.sequencial,
                     this.titulo = '';
                     this.genero = '';
                     this.autores = '';
                     this.ano = '';
+                    this.valor = '';
                 },
 
                 alterar: function(pos) {
                     this.posAlterar = pos;
+                    this.codigo = this.listaFilmes[pos].codigo
                     this.titulo = this.listaFilmes[pos].titulo;
                     this.genero = this.listaFilmes[pos].genero;
                     this.autores = this.listaFilmes[pos].autores;
                     this.ano = this.listaFilmes[pos].ano;
+                    this.valor = this.listaFilmes[pos].valor;
 
+                },
+                excluir: function(pos) {
+                    if (confirm('Tem certeza que deseja excluir o livro?')) {
+                        this.listaFilmes.splice(pos, 1);
+                    }
+                },
+            },
+            computed: {
+                total: function() {
+                    let subtotal = 0;
+                    for (let i = 0; i < this.listaFilmes.length; i++) {
+                        subtotal += parseFloat(this.listaFilmes[i].valor);
+                    }
+                    return subtotal;
                 }
-            }
+            },
+            filters: {
+                reais: function (valor) {
+                    valor = parseFloat(valor);
+                    return 'R$ '+ valor.toFixed(2).replace('.',',');
+                }},
         });
+
     </script>
 </body>
 </html>
