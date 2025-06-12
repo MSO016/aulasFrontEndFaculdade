@@ -89,10 +89,10 @@ A pasta Atividades contém uma série de projetos, cada um construindo sobre o a
 ## **🚀 Como Explorar os Projetos**
 
 1. **Clone o Repositório:**  
-   git clone https://github.com/MSO016/AulasFrontEndFaculdade.git
+   git clone https://github.com/MSO016/aulasFrontEndFaculdade.git
 
 2. **Navegue para a Pasta do Projeto:**  
-   cd AulasFrontEndFaculdade/Atividades/Atividade N (substitua N pelo número da atividade)
+   cd aulasFrontEndFaculdade/Atividades/Atividade N (substitua N pelo número da atividade)
 
 3. **Abra o index.html:**  
    * Para uma melhor experiência (e para a Atividade 10 funcionar corretamente), é recomendável usar uma extensão como o **Live Server** no VS Code.  
