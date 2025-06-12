@@ -148,12 +148,11 @@
             }
         },
             created() {
-                let endpoint = 'http://www.omdbapi.com/?i=tt3896198&apikey=6f5e877a';
+                 let endpoint = 'http://www.omdbapi.com/?i=tt3896198&apikey=6f5e877a';
                 let listaApi = axios.get(endpoint).then((res) => {
                     alert(res);
-                })
+                });
             }
-
         });
 
     </script>
