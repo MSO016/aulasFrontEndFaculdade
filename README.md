@@ -97,5 +97,3 @@ A pasta Atividades contém uma série de projetos, cada um construindo sobre o a
 3. **Abra o index.html:**  
    * Para uma melhor experiência (e para a Atividade 10 funcionar corretamente), é recomendável usar uma extensão como o **Live Server** no VS Code.  
    * Para a Atividade 10, certifique-se de que o **backend da API de filmes** esteja a correr localmente (instruções detalhadas no README.md específico da API).
-
-**Contatem-me** para discutir como estas competências podem impulsionar os seus próximos projetos\!
